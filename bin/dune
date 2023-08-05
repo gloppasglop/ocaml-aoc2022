@@ -15,3 +15,15 @@
  (names day3)
  (modules day3)
  (libraries aoc2022 base stdio))
+
+(executables
+ (public_names day4)
+ (names day4)
+ (modules day4)
+ (libraries aoc2022 base stdio))
+
+(executables
+ (public_names day5)
+ (names day5)
+ (modules day5)
+ (libraries aoc2022 base stdio))
