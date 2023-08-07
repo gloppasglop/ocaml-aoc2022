@@ -27,3 +27,9 @@
  (names day5)
  (modules day5)
  (libraries aoc2022 base stdio))
+
+(executables
+ (public_names day6)
+ (names day6)
+ (modules day6)
+ (libraries aoc2022 base stdio))
