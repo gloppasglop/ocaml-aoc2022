@@ -2,20 +2,7 @@ open Base
 open Stdio
 
 let file = "day4.txt"
-
-let read_file filename =
-  let read_line ic =
-    let rec read_line_aux ic acc =
-      match In_channel.input_line ic with
-      | Some line -> read_line_aux ic (line :: acc)
-      | None -> acc
-    in
-    read_line_aux ic []
-  in
-  List.rev (In_channel.with_file filename ~f:read_line)
-
-let data = read_file file
-let () = List.iter ~f:(printf "%s\n") data
+let data = In_channel.read_lines file
 
 (* Represent interval [a,b]*)
 type interval = { a : int; b : int }

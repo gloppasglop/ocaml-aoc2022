@@ -2,19 +2,7 @@ open Base
 open Stdio
 
 let file = "day3.txt"
-
-let read_file filename =
-  let read_line ic =
-    let rec read_line_aux ic acc =
-      match In_channel.input_line ic with
-      | Some line -> read_line_aux ic (line :: acc)
-      | None -> acc
-    in
-    read_line_aux ic []
-  in
-  List.rev (In_channel.with_file filename ~f:read_line)
-
-let data = read_file file
+let data = In_channel.read_lines file
 
 let split s =
   let l = String.length s in

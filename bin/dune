@@ -2,13 +2,13 @@
  (public_names day1)
  (names day1)
  (modules day1)
- (libraries aoc2022))
+ (libraries aoc2022 base stdio))
 
 (executables
  (public_names day2)
  (names day2)
  (modules day2)
- (libraries aoc2022))
+ (libraries aoc2022 base stdio))
 
 (executables
  (public_names day3)
@@ -32,4 +32,10 @@
  (public_names day6)
  (names day6)
  (modules day6)
+ (libraries aoc2022 base stdio))
+
+(executables
+ (public_names day7)
+ (names day7)
+ (modules day7)
  (libraries aoc2022 base stdio))

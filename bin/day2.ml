@@ -1,19 +1,10 @@
+open Base
+open Stdio
+
 let file = "day2.txt"
-
-let read_lines filename =
-  let read_line ic =
-    let rec read_line_aux ic acc =
-      match In_channel.input_line ic with
-      | Some line -> read_line_aux ic (line :: acc)
-      | None -> acc
-    in
-    read_line_aux ic []
-  in
-  List.rev (In_channel.with_open_text filename read_line)
-
-let data = read_lines file
+let data = In_channel.read_lines file
 let string_to_move s = (String.get s 0, String.get s 2)
-let moves = List.map string_to_move data
+let moves = List.map data ~f:string_to_move
 
 let playscore move =
   match move with
@@ -28,8 +19,8 @@ let playscore move =
   | 'C', 'Z' -> 3 + 3
   | _ -> failwith "Invalid move"
 
-let scores = List.map playscore moves
-let () = Printf.printf "Part 1 - %d\n" (List.fold_left ( + ) 0 scores)
+let scores = List.map moves ~f:playscore
+let () = printf "Part 1 - %d\n" (List.fold_left scores ~f:( + ) ~init:0)
 
 let playscore = function
   | 'A', 'X' -> 3 + 0
@@ -43,5 +34,5 @@ let playscore = function
   | 'C', 'Z' -> 1 + 6
   | _ -> failwith "Invalid move"
 
-let scores = List.map playscore moves
-let () = Printf.printf "Part 2 - %d\n" (List.fold_left ( + ) 0 scores)
+let scores = List.map moves ~f:playscore
+let () = printf "Part 2 - %d\n" (List.fold_left scores ~init:0 ~f:( + ))

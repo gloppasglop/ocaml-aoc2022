@@ -2,16 +2,7 @@ open Base
 open Stdio
 
 let file = "day6.txt"
-
-let read_file filename =
-  let rec read_line ic =
-    match In_channel.input_line ic with
-    | Some line -> line :: read_line ic
-    | None -> []
-  in
-  List.rev (In_channel.with_file filename ~f:read_line)
-
-let data = read_file file
+let data = In_channel.read_lines file
 let message = match data with head :: _ -> head | _ -> ""
 
 let get_marker_pos marker_len message =

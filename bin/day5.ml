@@ -3,17 +3,6 @@ open Stdio
 
 let file = "day5.txt"
 
-let read_file filename =
-  let read_line ic =
-    let rec read_line_aux ic acc =
-      match In_channel.input_line ic with
-      | Some line -> read_line_aux ic (line :: acc)
-      | None -> acc
-    in
-    read_line_aux ic []
-  in
-  List.rev (In_channel.with_file filename ~f:read_line)
-
 type aocdata = {
   section : string;
   instructions : string list;
@@ -27,7 +16,7 @@ let _pp_aocdata r =
   print_string "  stack:\n";
   List.iter r.stacks ~f:(printf "        %s\n")
 
-let data = read_file file
+let data = In_channel.read_lines file
 
 let parse_data data =
   (* let update_acc line acc =
